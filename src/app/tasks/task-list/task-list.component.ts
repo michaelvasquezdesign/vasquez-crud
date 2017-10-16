@@ -86,8 +86,8 @@ export class TaskListComponent implements OnInit {
       this.tasks = tasks.map((task) => {
         if (!task.createdby) {
           task.createdby = {
-            name: username,
-            email: email
+            name: '',
+            email: ''
           }
         }
         return task;
@@ -112,8 +112,8 @@ export class TaskListComponent implements OnInit {
       duedate: '',
       completed: false,
       createdby: {
-        name: '',
-        email: ''
+        name: username,
+        email: email
       }
     };
 
