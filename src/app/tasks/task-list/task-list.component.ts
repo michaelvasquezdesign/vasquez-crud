@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { TaskService } from '../task.service';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
-import * as userGlobals from './userglobals';
 
 @Component({
   selector: 'task-list',
