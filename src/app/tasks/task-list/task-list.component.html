@@ -6,7 +6,7 @@
         *ngFor="let task of tasks"
         (click)="selectTask(task)"
         [class.active]="task === selectedTask">
-        <input type="checkbox" disabled="" [(ngModel)]="task.completed" />{{task.name}} - Due by: {{task.duedate}}
+        <input type="checkbox" disabled="" [(ngModel)]="task.completed" /> "{{task.name}}" - Due by: {{task.duedate}}
       </li>
     </ul>
     <button class="btn btn-warning" (click)="createNewTask()">New</button>

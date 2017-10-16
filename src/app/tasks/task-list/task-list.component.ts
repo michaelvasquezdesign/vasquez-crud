@@ -73,7 +73,7 @@ export class TaskListComponent implements OnInit {
     function checkCookie() {
       username = getCookie("username");
       if(username != "") {
-        alert("Welcome again " + username);
+        //alert("Welcome again " + username);
       } else {
         username = prompt("Please enter your name:","");
         if(username != "" && username != null) {
@@ -91,7 +91,7 @@ export class TaskListComponent implements OnInit {
       if(localStorage.getItem("username")) {
         username = localStorage.getItem("username");
         email = localStorage.getItem("email");
-        alert("Welcome again " + username);
+        //alert("Welcome again " + username);
       } else {
         username = prompt("Please enter your name:","");
         if(username != "" && username != null) {
