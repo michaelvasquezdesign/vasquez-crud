@@ -14,8 +14,8 @@ export class TaskListComponent implements OnInit {
 
   tasks: Task[]
   selectedTask: Task
-  username = ''
-  email = ''
+  username: ''
+  email: ''
 
   constructor(private taskService: TaskService) { }
 
