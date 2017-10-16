@@ -49,8 +49,8 @@ export class TaskListComponent implements OnInit {
       duedate: '',
       completed: false,
       createdby: {
-        name: '';
-        email: '';
+        name: '',
+        email: ''
       }
     };
 
