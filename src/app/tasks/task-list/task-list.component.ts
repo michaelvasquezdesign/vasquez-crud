@@ -14,12 +14,12 @@ export class TaskListComponent implements OnInit {
 
   tasks: Task[]
   selectedTask: Task
+  username = ''
+  email = ''
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    var username = '';
-    var email = '';
 
     function setCookie(cname, cvalue, exdays) {
       var d = new Date();
