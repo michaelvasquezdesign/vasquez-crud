@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
-import * as userGlobals from './userglobals';
 
 @NgModule({
   declarations: [
