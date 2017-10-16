@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
-import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactDetailsComponent,
-    ContactListComponent
+    TaskDetailsComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,

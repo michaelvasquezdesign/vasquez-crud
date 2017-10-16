@@ -1,0 +1,30 @@
+<div *ngIf="task" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="task._id">Task Details</h2>
+    <h2 *ngIf="!task._id">New Task</h2>
+  </div>
+</div>
+<div *ngIf="task" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="task-name">Name</label>
+      <input class="form-control" name="task-name" [(ngModel)]="task.name" placeholder="Name"/>
+    </div>
+    <div class="form-group">
+      <label for="task-phone-work">Due Date</label>
+      <input class="form-control" name="task-due" [(ngModel)]="task.duedate" placeholder="MM/DD/YYYY"/>
+    </div>
+    <div class="form-group">
+      <label for="task-phone-work">Completed</label>
+      <checkbox class="form-control" name="task-completed" [(ngModel)]="task.completed" />
+    </div>
+    <div class="form-group">
+      <label for="task-phone-work">Created By</label>
+      <input disabled="" class="form-control" name="task-created-name" [(ngModel)]="task.createdby.name" placeholder=""/>
+      <input disabled="" class="form-control" name="task-created-email" [(ngModel)]="task.createdby.email" placeholder=""/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!task._id" (click)="createTask(task)">Create</button>
+    <button class="btn btn-info" *ngIf="task._id" (click)="updateTask(task)">Update</button>
+    <button class="btn btn-danger" *ngIf="task._id" (click)="deleteTask(task._id)">Delete</button>
+  </form>
+</div>

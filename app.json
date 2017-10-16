@@ -1,6 +1,6 @@
 {
-  "name": "MEAN Contact List",
-  "description": "Example contact list app using MEAN",
+  "name": "Vasquez CRUD App",
+  "description": "Task lists using AngularJS, NodeJS, MongoDB, on Heroku",
   "keywords": [
     "MEAN",
     "Angular",
@@ -8,7 +8,7 @@
     "MongoDB",
     "mLab"
   ],
-  "repository": "https://github.com/chrisckchang/mean-contactlist-angular2",
+  "repository": "https://git.heroku.com/vasquez-crud.git",
   "success_url": "/",
   "formation": {
     "web": {

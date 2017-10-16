@@ -4,6 +4,7 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
+var TASKS_COLLECTION = "tasks";
 
 var app = express();
 app.use(bodyParser.json());
@@ -107,6 +108,86 @@ app.delete("/api/contacts/:id", function(req, res) {
   db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
+    } else {
+      res.status(200).json(req.params.id);
+    }
+  });
+});
+
+// TASKS API ROUTES BELOW
+
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+  console.log("ERROR: " + reason);
+  res.status(code || 500).json({"error": message});
+}
+
+/*  "/api/tasks"
+ *    GET: finds all tasks
+ *    POST: creates a new task
+ */
+
+app.get("/api/tasks", function(req, res) {
+  db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get tasks.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+app.post("/api/tasks", function(req, res) {
+  var newContact = req.body;
+  newContact.createDate = new Date();
+
+  if (!req.body.name) {
+    handleError(res, "Invalid user input", "Must provide a name.", 400);
+  }
+
+  db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to create new task.");
+    } else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
+
+/*  "/api/tasks/:id"
+ *    GET: find task by id
+ *    PUT: update task by id
+ *    DELETE: deletes task by id
+ */
+
+app.get("/api/tasks/:id", function(req, res) {
+  db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to get task");
+    } else {
+      res.status(200).json(doc);
+    }
+  });
+});
+
+app.put("/api/tasks/:id", function(req, res) {
+  var updateDoc = req.body;
+  delete updateDoc._id;
+
+  db.collection(CONTACTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to update task");
+    } else {
+      updateDoc._id = req.params.id;
+      res.status(200).json(updateDoc);
+    }
+  });
+});
+
+app.delete("/api/tasks/:id", function(req, res) {
+  db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete task");
     } else {
       res.status(200).json(req.params.id);
     }
